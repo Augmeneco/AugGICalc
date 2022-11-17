@@ -1,0 +1,416 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://fonts/genshin2.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://images/icons/ascension_star.png" type="Texture" id=2]
+[ext_resource path="res://images/chars/unknown.png" type="Texture" id=3]
+[ext_resource path="res://fonts/font_32.tres" type="DynamicFont" id=4]
+[ext_resource path="res://characters/BaseChar/Main.gd" type="Script" id=5]
+[ext_resource path="res://images/icons/slider.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="Theme" id=2]
+TabContainer/styles/panel = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.2, 0.227451, 0.309804, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 1, 1, 1, 0.54902 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id=6]
+HSlider/icons/grabber = ExtResource( 6 )
+HSlider/icons/grabber_highlight = ExtResource( 6 )
+HSlider/styles/grabber_area = SubResource( 17 )
+HSlider/styles/grabber_area_highlight = SubResource( 17 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -962.0
+rect_pivot_offset = Vector2( -872, -336 )
+theme = SubResource( 2 )
+script = ExtResource( 5 )
+
+[node name="Control2" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CharAvatar" type="TextureRect" parent="Control2"]
+margin_right = 192.0
+margin_bottom = 192.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="CharName" type="Label" parent="Control2"]
+margin_left = 208.0
+margin_right = 454.0
+margin_bottom = 59.0
+custom_fonts/font = SubResource( 3 )
+text = "Name"
+valign = 1
+
+[node name="Stars" type="HBoxContainer" parent="Control2"]
+margin_left = 208.0
+margin_top = 64.0
+margin_right = 348.0
+margin_bottom = 88.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control2/Stars"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="Control2/Stars"]
+margin_left = 29.0
+margin_right = 53.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect3" type="TextureRect" parent="Control2/Stars"]
+margin_left = 58.0
+margin_right = 82.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect4" type="TextureRect" parent="Control2/Stars"]
+margin_left = 87.0
+margin_right = 111.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect5" type="TextureRect" parent="Control2/Stars"]
+margin_left = 116.0
+margin_right = 140.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="CharLvlChanger" type="HBoxContainer" parent="Control2"]
+anchor_right = 1.0
+margin_left = 208.0
+margin_top = 88.0
+margin_right = 2.0
+margin_bottom = 152.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Control2/CharLvlChanger"]
+margin_right = 142.0
+margin_bottom = 64.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Уровень"
+valign = 1
+
+[node name="Control" type="Control" parent="Control2/CharLvlChanger"]
+margin_left = 146.0
+margin_right = 156.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Control2" type="Control" parent="Control2/CharLvlChanger"]
+margin_left = 160.0
+margin_right = 220.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 60, 40 )
+
+[node name="Panel" type="Panel" parent="Control2/CharLvlChanger/Control2"]
+margin_top = 7.0
+margin_right = 64.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 60, 40 )
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label2" type="Label" parent="Control2/CharLvlChanger/Control2/Panel"]
+margin_left = 8.0
+margin_top = -7.0
+margin_right = 58.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "90"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="Control2/CharLvlChanger"]
+margin_left = 224.0
+margin_right = 282.0
+margin_bottom = 64.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "/90"
+align = 1
+valign = 1
+
+[node name="Control3" type="Control" parent="Control2/CharLvlChanger"]
+margin_left = 286.0
+margin_right = 306.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="HSlider" type="HSlider" parent="Control2/CharLvlChanger"]
+margin_left = 310.0
+margin_right = 752.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = SubResource( 6 )
+min_value = 10.0
+max_value = 90.0
+step = 10.0
+value = 90.0
+
+[node name="CharA1Changer" type="HBoxContainer" parent="Control2"]
+anchor_right = 1.0
+margin_top = 192.0
+margin_right = 2.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Control2/CharA1Changer"]
+margin_right = 427.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Атака"
+valign = 1
+
+[node name="Control" type="Control" parent="Control2/CharA1Changer"]
+margin_left = 431.0
+margin_right = 441.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Control2" type="Control" parent="Control2/CharA1Changer"]
+margin_left = 445.0
+margin_right = 505.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 60, 40 )
+
+[node name="Panel" type="Panel" parent="Control2/CharA1Changer/Control2"]
+margin_top = 7.0
+margin_right = 64.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 60, 40 )
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label2" type="Label" parent="Control2/CharA1Changer/Control2/Panel"]
+margin_left = 8.0
+margin_top = -7.0
+margin_right = 58.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Control3" type="Control" parent="Control2/CharA1Changer"]
+margin_left = 509.0
+margin_right = 529.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="HSlider" type="HSlider" parent="Control2/CharA1Changer"]
+margin_left = 533.0
+margin_right = 960.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = SubResource( 6 )
+min_value = 1.0
+max_value = 10.0
+value = 10.0
+
+[node name="CharA2Changer" type="HBoxContainer" parent="Control2"]
+anchor_right = 1.0
+margin_top = 247.0
+margin_right = 2.0
+margin_bottom = 311.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Control2/CharA2Changer"]
+margin_right = 427.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Стихийный навык"
+valign = 1
+
+[node name="Control" type="Control" parent="Control2/CharA2Changer"]
+margin_left = 431.0
+margin_right = 441.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Control2" type="Control" parent="Control2/CharA2Changer"]
+margin_left = 445.0
+margin_right = 505.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 60, 40 )
+
+[node name="Panel" type="Panel" parent="Control2/CharA2Changer/Control2"]
+margin_top = 7.0
+margin_right = 64.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 60, 40 )
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label2" type="Label" parent="Control2/CharA2Changer/Control2/Panel"]
+margin_left = 8.0
+margin_top = -7.0
+margin_right = 58.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Control3" type="Control" parent="Control2/CharA2Changer"]
+margin_left = 509.0
+margin_right = 529.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="HSlider" type="HSlider" parent="Control2/CharA2Changer"]
+margin_left = 533.0
+margin_right = 960.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = SubResource( 6 )
+min_value = 1.0
+max_value = 10.0
+value = 10.0
+
+[node name="CharA3Changer" type="HBoxContainer" parent="Control2"]
+anchor_right = 1.0
+margin_top = 304.0
+margin_right = 2.0
+margin_bottom = 368.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Control2/CharA3Changer"]
+margin_right = 427.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Взрыв стихий"
+valign = 1
+
+[node name="Control" type="Control" parent="Control2/CharA3Changer"]
+margin_left = 431.0
+margin_right = 441.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Control2" type="Control" parent="Control2/CharA3Changer"]
+margin_left = 445.0
+margin_right = 505.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 60, 40 )
+
+[node name="Panel" type="Panel" parent="Control2/CharA3Changer/Control2"]
+margin_top = 7.0
+margin_right = 64.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 60, 40 )
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label2" type="Label" parent="Control2/CharA3Changer/Control2/Panel"]
+margin_left = 8.0
+margin_top = -7.0
+margin_right = 58.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="Control3" type="Control" parent="Control2/CharA3Changer"]
+margin_left = 509.0
+margin_right = 529.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="HSlider" type="HSlider" parent="Control2/CharA3Changer"]
+margin_left = 533.0
+margin_right = 960.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = SubResource( 6 )
+min_value = 1.0
+max_value = 10.0
+value = 10.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 384.0
+margin_right = 2.0
+
+[node name="PassivesList" type="VBoxContainer" parent="Control2/ScrollContainer"]
+margin_right = 960.0
+margin_bottom = 696.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

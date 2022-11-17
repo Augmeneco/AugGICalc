@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://fonts/font_32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://images/icons/checkbutton_on.png" type="Texture" id=2]
+[ext_resource path="res://images/icons/checkbutton_off.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="Theme" id=7]
+CheckButton/icons/off = ExtResource( 3 )
+CheckButton/icons/on = ExtResource( 2 )
+CheckButton/styles/disabled = SubResource( 1 )
+CheckButton/styles/focus = SubResource( 2 )
+CheckButton/styles/hover = SubResource( 3 )
+CheckButton/styles/hover_pressed = SubResource( 4 )
+CheckButton/styles/normal = SubResource( 5 )
+CheckButton/styles/pressed = SubResource( 6 )
+
+[node name="Main" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( -664, 184 )
+custom_constants/separation = 10
+
+[node name="Control" type="Control" parent="."]
+margin_bottom = 47.0
+
+[node name="CheckButton" type="CheckButton" parent="."]
+margin_left = 10.0
+margin_right = 104.0
+margin_bottom = 47.0
+theme = SubResource( 7 )
+
+[node name="PassiveName" type="Label" parent="."]
+margin_left = 114.0
+margin_top = 3.0
+margin_right = 207.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Name"
+valign = 1

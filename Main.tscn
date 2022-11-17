@@ -1,0 +1,277 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://weapons/Weapons.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=2]
+[ext_resource path="res://images/icons/tab_stats_light.png" type="Texture" id=3]
+[ext_resource path="res://images/icons/tab_weapon2_light.png" type="Texture" id=4]
+[ext_resource path="res://images/icons/tab_compare_light.png" type="Texture" id=5]
+[ext_resource path="res://images/icons/tab_features_light.png" type="Texture" id=6]
+[ext_resource path="res://fonts/font_28.tres" type="DynamicFont" id=7]
+[ext_resource path="res://images/icons/tab_buffs_light.png" type="Texture" id=8]
+[ext_resource path="res://images/icons/tab_share_2_light.png" type="Texture" id=9]
+[ext_resource path="res://images/icons/tab_rotation_light.png" type="Texture" id=10]
+[ext_resource path="res://images/icons/tab_weapon_light.png" type="Texture" id=11]
+[ext_resource path="res://images/icons/tab_artifact_light.png" type="Texture" id=12]
+[ext_resource path="res://images/icons/tab_char_light.png" type="Texture" id=13]
+[ext_resource path="res://images/background.jpg" type="Texture" id=14]
+[ext_resource path="res://characters/BaseChar/Main.tscn" type="PackedScene" id=15]
+[ext_resource path="res://fonts/font_48.tres" type="DynamicFont" id=18]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0.0941176 )
+
+[sub_resource type="Theme" id=4]
+Panel/styles/panel = SubResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="Theme" id=6]
+TabContainer/styles/panel = SubResource( 5 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Control" type="Panel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 132.0
+margin_top = 64.0
+margin_right = -128.0
+margin_bottom = -24.0
+theme = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = -32.0
+margin_bottom = -28.0
+custom_constants/separation = 20
+
+[node name="LeftTab" type="TabContainer" parent="Control/Control/HBoxContainer"]
+margin_right = 792.0
+margin_bottom = 940.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 6 )
+tabs_visible = false
+
+[node name="CharStats" type="ScrollContainer" parent="Control/Control/HBoxContainer/LeftTab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Control/HBoxContainer/LeftTab/CharStats"]
+margin_right = 792.0
+margin_bottom = 940.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MainStatContainer" type="HBoxContainer" parent="Control/Control/HBoxContainer/LeftTab/CharStats/VBoxContainer"]
+margin_right = 792.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/Control/HBoxContainer/LeftTab/CharStats/VBoxContainer/MainStatContainer"]
+margin_top = 2.0
+margin_right = 403.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0.827451, 0.737255, 0.556863, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Основные характеристики"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Control/HBoxContainer/LeftTab/CharStats/VBoxContainer/MainStatContainer"]
+margin_left = 407.0
+margin_top = 2.0
+margin_right = 792.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 7 )
+text = "Всего"
+align = 2
+valign = 1
+
+[node name="SecondStatContainer" type="HBoxContainer" parent="Control/Control/HBoxContainer/LeftTab/CharStats/VBoxContainer"]
+margin_top = 44.0
+margin_right = 792.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/Control/HBoxContainer/LeftTab/CharStats/VBoxContainer/SecondStatContainer"]
+margin_top = 2.0
+margin_right = 420.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0.827451, 0.737255, 0.556863, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Вторичные характеристики"
+align = 1
+valign = 1
+
+[node name="ElementsContainer" type="HBoxContainer" parent="Control/Control/HBoxContainer/LeftTab/CharStats/VBoxContainer"]
+margin_top = 88.0
+margin_right = 792.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/Control/HBoxContainer/LeftTab/CharStats/VBoxContainer/ElementsContainer"]
+margin_top = 2.0
+margin_right = 154.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0.827451, 0.737255, 0.556863, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Элементы"
+align = 1
+valign = 1
+
+[node name="RightTab" type="TabContainer" parent="Control/Control/HBoxContainer"]
+margin_left = 812.0
+margin_right = 1604.0
+margin_bottom = 940.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 6 )
+tabs_visible = false
+
+[node name="Character" parent="Control/Control/HBoxContainer/RightTab" instance=ExtResource( 15 )]
+margin_right = 0.0
+size_flags_horizontal = 3
+theme = null
+
+[node name="Weapon" parent="Control/Control/HBoxContainer/RightTab" instance=ExtResource( 1 )]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 120.0
+margin_bottom = 1072.0
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+margin_right = 112.0
+margin_bottom = 70.0
+icon = ExtResource( 3 )
+icon_align = 1
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+margin_top = 74.0
+margin_right = 112.0
+margin_bottom = 144.0
+icon = ExtResource( 6 )
+icon_align = 1
+
+[node name="Button3" type="Button" parent="Control/VBoxContainer"]
+margin_top = 148.0
+margin_right = 112.0
+margin_bottom = 218.0
+icon = ExtResource( 4 )
+icon_align = 1
+
+[node name="Button4" type="Button" parent="Control/VBoxContainer"]
+margin_top = 222.0
+margin_right = 112.0
+margin_bottom = 308.0
+icon = ExtResource( 5 )
+icon_align = 1
+
+[node name="Button5" type="Button" parent="Control/VBoxContainer"]
+margin_top = 312.0
+margin_right = 112.0
+margin_bottom = 382.0
+icon = ExtResource( 9 )
+icon_align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 1072.0
+
+[node name="CharacterTab" type="Button" parent="Control/VBoxContainer2"]
+margin_right = 112.0
+margin_bottom = 70.0
+icon = ExtResource( 13 )
+icon_align = 1
+
+[node name="WeaponTab" type="Button" parent="Control/VBoxContainer2"]
+margin_top = 74.0
+margin_right = 112.0
+margin_bottom = 144.0
+icon = ExtResource( 11 )
+icon_align = 1
+
+[node name="Button7" type="Button" parent="Control/VBoxContainer2"]
+margin_top = 148.0
+margin_right = 112.0
+margin_bottom = 218.0
+icon = ExtResource( 12 )
+icon_align = 1
+
+[node name="Button8" type="Button" parent="Control/VBoxContainer2"]
+margin_top = 222.0
+margin_right = 112.0
+margin_bottom = 292.0
+icon = ExtResource( 8 )
+icon_align = 1
+
+[node name="Button9" type="Button" parent="Control/VBoxContainer2"]
+margin_top = 296.0
+margin_right = 112.0
+margin_bottom = 366.0
+icon = ExtResource( 10 )
+icon_align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+anchor_right = 1.0
+margin_left = 132.0
+margin_right = -128.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="Control/HBoxContainer"]
+margin_top = 6.0
+margin_right = 828.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.827451, 0.737255, 0.556863, 1 )
+custom_fonts/font = ExtResource( 18 )
+text = "Характеристики"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer"]
+margin_left = 832.0
+margin_top = 6.0
+margin_right = 1660.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.827451, 0.737255, 0.556863, 1 )
+custom_fonts/font = ExtResource( 18 )
+text = "Персонаж"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Control/VBoxContainer2/CharacterTab" to="." method="_on_CharacterTab_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer2/WeaponTab" to="." method="_on_WeaponTab_pressed"]
