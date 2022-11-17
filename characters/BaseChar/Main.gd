@@ -11,24 +11,22 @@ class Character:
 	var base_stats = {
 		'hp': 10164,
 		'atk': 328,
-		'def': 607,
-		'cr': 0.242,
-		'cd': 0.5
+		'def': 607
 	}
 	
 	var talents: Dictionary
 	
 	var bonuses = {
 		'atk': 0, 'atk_flat': 0, 'def': 0, 'def_flat':0, 'hp': 0, 'hp_flat': 0, 'em': 0, 're': 0,
-		'cr': 0, 'cd': 0, 'flatdmg': 0, 'alldmg': 0, 'normaldmg': 0, 'chargedmg': 0, 'plungedmg': 0,
-		'skilldmg': 0, 'burstdmg': 0, 'pyrodmg': 0, 'cryodmg': 0, 'hydrodmg': 0, 'geodmg': 0,
+		'cr': 0.242, 'cd': 0.5, 'flatdmg': 0, 'alldmg': 0, 'normaldmg': 0, 'chargedmg': 0, 'plungedmg': 0,
+		'skilldmg': 0, 'burstdmg': 0, 'anemodmg':0, 'pyrodmg': 0, 'cryodmg': 0, 'hydrodmg': 0, 'geodmg': 0,
 		'dendrodmg': 0, 'electrodmg': 0, 'physdmg': 0
 	}
 	
 	var stats = {
 		'atk': 0, 'def': 0, 'hp': 0, 'em': 0, 're': 0,
 		'cr': 0, 'cd': 0, 'alldmg': 0, 'normaldmg': 0, 'chargedmg': 0, 'plungedmg': 0,
-		'skilldmg': 0, 'burstdmg': 0, 'pyrodmg': 0, 'cryodmg': 0, 'hydrodmg': 0, 'geodmg': 0,
+		'skilldmg': 0, 'burstdmg': 0, 'anemodmg':0, 'pyrodmg': 0, 'cryodmg': 0, 'hydrodmg': 0, 'geodmg': 0,
 		'dendrodmg': 0, 'electrodmg': 0, 'physdmg': 0
 	}
 	
@@ -91,12 +89,18 @@ func init_gui():
 				
 
 func calculate_stats():
-	add_buffs(Data.weapon.stat)
-	
-	character.stats['atk'] = (character.base_stats['atk'] + Data.weapon.atk) * \
-		(1+character.bonuses['atk']) + character.bonuses['atk_flat']
-	
-	print(character.stats)
+	for stat in character.stats:
+		if stat == 'hp':
+			character.stats['hp'] = character.base_stats['hp'] * (1+character.bonuses['hp']) + \
+				character.bonuses['hp_flat']
+		elif stat == 'atk':
+			character.stats['atk'] = (character.base_stats['atk'] + Data.weapon.atk) * \
+				(1+character.bonuses['atk']) + character.bonuses['atk_flat']
+		elif stat == 'def':
+			character.stats['def'] = character.base_stats['def'] * (1+character.bonuses['def']) + \
+				character.bonuses['def_flat']
+		else:
+			character.stats[stat] = character.bonuses[stat]
 	
 	for stat in character.stats:
 		if stat in Data.char_stats_gui:

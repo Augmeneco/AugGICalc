@@ -2,12 +2,14 @@ extends TabContainer
 
 var atk: int
 var stat: Dictionary
-#var buffs: Dictionary
 
 var weapons_list: Array
 var weapon_obj: Dictionary
 
 var stat_nums_format_regex = RegEx.new()
+
+#Баффы для удаления при изменении возвышения
+var active_buffs = {}
 
 func _ready():
 	weapons_list = JSON.parse(AugUtils.readFile('res://weapons/weapons.json')).result
@@ -56,17 +58,29 @@ func stat_nums_format(text: String, stats: Dictionary):
 	
 	return text
 
+#получает бафф пассивки соответствующий возвышению оружия
+func asc_num(buffs: Dictionary):
+	var asc_scale = $Control/WeaponAscChanger/HSlider.value
+	var output: Dictionary
+	
+	for buff in buffs:
+		output[buff] = buffs[buff] + buffs[buff]*0.25*(asc_scale-1)
+
+	return output
 
 func init_gui():
 	var passives_list: BoxContainer = $Control/ScrollContainer/PassivesList
 	var talent_panel_prefab = load('res://prefabs/PassivePanel.tscn')
 	var passive_button_prefab = load('res://prefabs/PassiveToggleButton.tscn')
 	
+	var asc_scale = $Control/WeaponAscChanger/HSlider.value
+	$Control/WeaponAscChanger/Control2/Panel/Label2.text = str(asc_scale)
+	
 	for passive in weapon_obj['gui']:
 		var talent_panel = talent_panel_prefab.instance()
 		#Настраиваем панель
 		talent_panel.get_node('VBoxContainer/TextContainer/PassiveText').bbcode_text = \
-			stat_nums_format(passive['desc'], passive['buff'])
+			stat_nums_format(passive['desc'], asc_num(passive['buff']))
 		talent_panel.get_node('VBoxContainer/NameContainer/PassiveName').text = \
 			passive['name']
 				
@@ -76,7 +90,7 @@ func init_gui():
 			talent_panel.get_node('VBoxContainer/Buttons').add_child(passive_button)
 			passive_button.get_node('PassiveName').text = passive['name']
 			passive_button.get_node('CheckButton').connect(
-				'toggled', self, 'buff_toggle_pressed', [passive['buff']])
+				'toggled', self, 'buff_toggle_pressed', [asc_num(passive['buff'])])
 			
 			#Прячем основное имя ибо кнопка
 			talent_panel.get_node('VBoxContainer/NameContainer/PassiveName').hide()
@@ -90,4 +104,22 @@ func init_gui():
 	
 func buff_toggle_pressed(pressed: bool, buffs: Dictionary):
 	Data.character.add_buffs(buffs, pressed)
+	
+	for i in buffs:
+		if pressed:
+			if i in active_buffs:
+				active_buffs[i] += buffs[i]
+			else:
+				active_buffs[i] = buffs[i]
+		else:
+			active_buffs[i] -= buffs[i]
 			
+func _on_HSlider_value_changed(value):
+	for child in $Control/ScrollContainer/PassivesList.get_children():
+		child.queue_free()
+		
+	Data.character.add_buffs(active_buffs, false)
+	active_buffs = {} 
+		
+	init_gui()
+	pass 

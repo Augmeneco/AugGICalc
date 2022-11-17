@@ -15,8 +15,8 @@ func init_stat(icon: String, name: String, value: String):
 	$StatLabel.text = value
 	pass
 	
-func update_stat(value: int):
-	if stat_name in ['atk','def','hp','em']:
+func update_stat(value: float):
+	if icon in ['atk','def','hp','em']:
 		$StatLabel.text = str(value)
 	else:
 		$StatLabel.text = str(value*100)+'%'

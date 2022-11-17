@@ -7,6 +7,8 @@ func _ready():
 	Data.character = $Control/Control/HBoxContainer/RightTab/Character
 	Data.weapon = $Control/Control/HBoxContainer/RightTab/Weapon
 	
+	Data.character.add_buffs(Data.weapon.stat)
+	
 	$Control/Control/HBoxContainer/RightTab/Character.calculate_stats()
 
 func _process(delta):
@@ -28,7 +30,7 @@ func init_main_stats():
 	var stats_category = [
 		['hp','atk','def','em'],
 		['re','cr','cd'],
-		['anemo','cryo','electro','geo','hydro','pyro','dendro','phys']
+		['anemodmg','cryodmg','electrodmg','geodmg','hydrodmg','pyrodmg','dendrodmg','physdmg']
 	]
 	var char_stat_prefab = load('res://prefabs/CharMainStats.tscn')
 	

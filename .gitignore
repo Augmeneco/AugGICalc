@@ -75,4 +75,5 @@ __pycache__/*
 
 #Godot's trash
 *.import
+release/*
 .import/*

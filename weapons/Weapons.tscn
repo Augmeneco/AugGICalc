@@ -126,7 +126,7 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="CharLvlChanger" type="HBoxContainer" parent="Control"]
+[node name="WeaponLvlChanger" type="HBoxContainer" parent="Control"]
 anchor_right = 1.0
 margin_left = 208.0
 margin_top = 88.0
@@ -136,7 +136,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Control/CharLvlChanger"]
+[node name="Label" type="Label" parent="Control/WeaponLvlChanger"]
 margin_right = 142.0
 margin_bottom = 64.0
 size_flags_vertical = 3
@@ -144,19 +144,19 @@ custom_fonts/font = ExtResource( 1 )
 text = "Уровень"
 valign = 1
 
-[node name="Control" type="Control" parent="Control/CharLvlChanger"]
+[node name="Control" type="Control" parent="Control/WeaponLvlChanger"]
 margin_left = 146.0
 margin_right = 156.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 10, 0 )
 
-[node name="Control2" type="Control" parent="Control/CharLvlChanger"]
+[node name="Control2" type="Control" parent="Control/WeaponLvlChanger"]
 margin_left = 160.0
 margin_right = 220.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 60, 40 )
 
-[node name="Panel" type="Panel" parent="Control/CharLvlChanger/Control2"]
+[node name="Panel" type="Panel" parent="Control/WeaponLvlChanger/Control2"]
 margin_top = 7.0
 margin_right = 64.0
 margin_bottom = 55.0
@@ -164,7 +164,7 @@ rect_min_size = Vector2( 60, 40 )
 size_flags_vertical = 0
 custom_styles/panel = SubResource( 24 )
 
-[node name="Label2" type="Label" parent="Control/CharLvlChanger/Control2/Panel"]
+[node name="Label2" type="Label" parent="Control/WeaponLvlChanger/Control2/Panel"]
 margin_left = 8.0
 margin_top = -7.0
 margin_right = 58.0
@@ -176,7 +176,7 @@ text = "90"
 align = 1
 valign = 1
 
-[node name="Label3" type="Label" parent="Control/CharLvlChanger"]
+[node name="Label3" type="Label" parent="Control/WeaponLvlChanger"]
 margin_left = 224.0
 margin_right = 282.0
 margin_bottom = 64.0
@@ -186,13 +186,13 @@ text = "/90"
 align = 1
 valign = 1
 
-[node name="Control3" type="Control" parent="Control/CharLvlChanger"]
+[node name="Control3" type="Control" parent="Control/WeaponLvlChanger"]
 margin_left = 286.0
 margin_right = 306.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 20, 0 )
 
-[node name="HSlider" type="HSlider" parent="Control/CharLvlChanger"]
+[node name="HSlider" type="HSlider" parent="Control/WeaponLvlChanger"]
 margin_left = 310.0
 margin_right = 754.0
 margin_bottom = 64.0
@@ -218,7 +218,7 @@ Stat"
 text = "Base
 Stat"
 
-[node name="CharA1Changer" type="HBoxContainer" parent="Control"]
+[node name="WeaponAscChanger" type="HBoxContainer" parent="Control"]
 anchor_right = 1.0
 margin_left = 208.0
 margin_top = 136.0
@@ -227,7 +227,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Control/CharA1Changer"]
+[node name="Label" type="Label" parent="Control/WeaponAscChanger"]
 margin_right = 323.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
@@ -236,19 +236,19 @@ custom_fonts/font = ExtResource( 1 )
 text = "Ранг пробуждения"
 valign = 1
 
-[node name="Control" type="Control" parent="Control/CharA1Changer"]
+[node name="Control" type="Control" parent="Control/WeaponAscChanger"]
 margin_left = 327.0
 margin_right = 337.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 10, 0 )
 
-[node name="Control2" type="Control" parent="Control/CharA1Changer"]
+[node name="Control2" type="Control" parent="Control/WeaponAscChanger"]
 margin_left = 341.0
 margin_right = 401.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 60, 40 )
 
-[node name="Panel" type="Panel" parent="Control/CharA1Changer/Control2"]
+[node name="Panel" type="Panel" parent="Control/WeaponAscChanger/Control2"]
 margin_top = 7.0
 margin_right = 64.0
 margin_bottom = 55.0
@@ -256,7 +256,7 @@ rect_min_size = Vector2( 60, 40 )
 size_flags_vertical = 0
 custom_styles/panel = SubResource( 24 )
 
-[node name="Label2" type="Label" parent="Control/CharA1Changer/Control2/Panel"]
+[node name="Label2" type="Label" parent="Control/WeaponAscChanger/Control2/Panel"]
 margin_left = 8.0
 margin_top = -7.0
 margin_right = 58.0
@@ -268,13 +268,13 @@ text = "5"
 align = 1
 valign = 1
 
-[node name="Control3" type="Control" parent="Control/CharA1Changer"]
+[node name="Control3" type="Control" parent="Control/WeaponAscChanger"]
 margin_left = 405.0
 margin_right = 425.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 20, 0 )
 
-[node name="HSlider" type="HSlider" parent="Control/CharA1Changer"]
+[node name="HSlider" type="HSlider" parent="Control/WeaponAscChanger"]
 margin_left = 429.0
 margin_right = 752.0
 margin_bottom = 64.0
@@ -297,3 +297,5 @@ margin_right = 962.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[connection signal="value_changed" from="Control/WeaponAscChanger/HSlider" to="." method="_on_HSlider_value_changed"]
